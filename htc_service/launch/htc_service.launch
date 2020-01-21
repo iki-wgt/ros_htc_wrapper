@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="htc_service" type="start_htc_service.py" name="htc_service_node" output="screen">
+  </node>
+</launch>
+

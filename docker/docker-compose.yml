@@ -1,0 +1,29 @@
+version: '2.3'
+services:
+  mmdetection:
+    image: ros_htc:latest
+    environment:
+      ROS_IP: $ROS_IP
+      ROS_MASTER_URI: $ROS_MASTER_URI
+      DISPLAY: $DISPLAY
+      QT_X11_NO_MITSHM: '1'
+    stdin_open: true
+    network_mode: host
+    runtime: nvidia
+    volumes:
+      - nvidia_driver_418.87.00:/usr/local/nvidia:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/.Xauthority:/root/.Xauthority
+    privileged: true
+    devices:
+    - /dev/nvidia0
+    - /dev/nvidiactl
+    - /dev/nvidia-uvm
+    - /dev/bus/usb:/dev/bus/usb
+    tty: true
+    command: /bin/bash -c "source /opt/ros/kinetic/setup.sh; source /root/.bashrc; source /root/catkin_ws/devel/setup.bash; roslaunch htc_service htc_service.launch"
+
+version: '2.3'
+volumes:
+  nvidia_driver_418.87.00:
+    external: true

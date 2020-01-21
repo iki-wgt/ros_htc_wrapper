@@ -1,0 +1,3 @@
+sensor_msgs/Image image
+---
+htc_msg/Object[] objects
