@@ -13,7 +13,7 @@ docker build -t ros_htc . --no-cache
 
 ## Messages
 ### Service message
-The [Service message](./htc_service_msg/srv/HtcServiceMsg.srv) takes a given image and returns a list of objects of [Object message](./htc_msg/msg/Object.msg) type containing recognized pixel segmented objects:
+The [Service message](./htc_service_msg/srv/HtcServiceMsg.srv) takes an RGB image and returns a list of recognized objects of [Object message](./htc_msg/msg/Object.msg) type with pixel segmentation:
 ```console
 sensor_msgs/Image image
 ---
